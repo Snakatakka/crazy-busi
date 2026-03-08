@@ -8,4 +8,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	text = str(round(abs(player.speed / 12)))
+	text = str(round(abs(player.speed / 16)))

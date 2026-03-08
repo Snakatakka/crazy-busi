@@ -3,11 +3,12 @@
 [ext_resource type="Script" uid="uid://cjosawtt123ju" path="res://scenes/player/bus.gd" id="1_stnsb"]
 [ext_resource type="Texture2D" uid="uid://bgierejs0bjsa" path="res://assets/images/icon.svg" id="2_8154j"]
 [ext_resource type="Script" uid="uid://c081tvfvvy0qv" path="res://scenes/player/camera.gd" id="3_er63n"]
+[ext_resource type="FontFile" uid="uid://cbv47ww7cvyxn" path="res://assets/fonts/fibberish.ttf" id="4_vcllu"]
 [ext_resource type="Script" uid="uid://qedvecudlusx" path="res://scenes/player/speedometer.gd" id="4_xvoik"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5urgl"]
-radius = 130.0
-height = 344.0
+radius = 75.0
+height = 340.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_38u8m"]
 animations = [{
@@ -20,10 +21,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6x00d"]
-size = Vector2(108, 108)
-
 [node name="bus" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 11
 script = ExtResource("1_stnsb")
 
 [node name="pickupDetection" type="Area2D" parent="."]
@@ -38,7 +38,7 @@ sprite_frames = SubResource("SpriteFrames_38u8m")
 
 [node name="busHitbox" type="CollisionShape2D" parent="."]
 rotation = 1.5707964
-shape = SubResource("RectangleShape2D_6x00d")
+shape = SubResource("CapsuleShape2D_5urgl")
 
 [node name="camera" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
@@ -51,6 +51,7 @@ offset_left = 432.0
 offset_top = 475.0
 offset_right = 1148.0
 offset_bottom = 640.0
+theme_override_fonts/normal_font = ExtResource("4_vcllu")
 theme_override_font_sizes/normal_font_size = 80
 text = "a"
 fit_content = true

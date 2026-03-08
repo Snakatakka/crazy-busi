@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://j2y1411io0we"]
+[gd_scene load_steps=6 format=3 uid="uid://j2y1411io0we"]
 
 [ext_resource type="PackedScene" uid="uid://cauuub3s13vfw" path="res://scenes/player/bus.tscn" id="1_myinc"]
+[ext_resource type="PackedScene" uid="uid://4uygp5rnyhy2" path="res://scenes/stop.tscn" id="2_njov2"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_njov2"]
 
@@ -21,3 +22,6 @@ physics_material_override = SubResource("PhysicsMaterial_2au82")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(681, -408)
 shape = SubResource("RectangleShape2D_8tn2x")
+
+[node name="stop" parent="." instance=ExtResource("2_njov2")]
+position = Vector2(-833, 451)

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://4uygp5rnyhy2"]
+
+[ext_resource type="Script" uid="uid://b5eftgxyskuk6" path="res://scenes/stop.gd" id="1_8ug1m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02qw6"]
+size = Vector2(364, 150)
+
+[node name="stop" type="Area2D"]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_8ug1m")
+
+[node name="stopTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="stopDetectionRadius" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_02qw6")
+debug_color = Color(3.9948522e-06, 0.6322874, 0.45654023, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="onBodyEntered"]
+[connection signal="body_exited" from="." to="." method="onBodyExited"]
+[connection signal="timeout" from="stopTimer" to="." method="onStopTimerTimeout"]
