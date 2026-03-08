@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://j27pa0eg82j7"]
+
+[ext_resource type="Script" uid="uid://c081tvfvvy0qv" path="res://scenes/player/camera.gd" id="1_8vrsm"]
+
+[node name="camera" type="Camera2D"]
+script = ExtResource("1_8vrsm")
+
+[node name="gui" type="CanvasLayer" parent="."]

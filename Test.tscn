@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://j2y1411io0we"]
+
+[ext_resource type="PackedScene" uid="uid://cauuub3s13vfw" path="res://scenes/player/bus.tscn" id="1_myinc"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_njov2"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2au82"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tn2x"]
+size = Vector2(778, 517)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="bus" parent="." instance=ExtResource("1_myinc")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+material = SubResource("CanvasItemMaterial_njov2")
+physics_material_override = SubResource("PhysicsMaterial_2au82")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(681, -408)
+shape = SubResource("RectangleShape2D_8tn2x")

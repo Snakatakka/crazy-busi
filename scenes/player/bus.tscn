@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://cauuub3s13vfw"]
+
+[ext_resource type="Script" uid="uid://cjosawtt123ju" path="res://scenes/player/bus.gd" id="1_stnsb"]
+[ext_resource type="Texture2D" uid="uid://bgierejs0bjsa" path="res://assets/images/icon.svg" id="2_8154j"]
+[ext_resource type="Script" uid="uid://c081tvfvvy0qv" path="res://scenes/player/camera.gd" id="3_er63n"]
+[ext_resource type="Script" uid="uid://qedvecudlusx" path="res://scenes/player/speedometer.gd" id="4_xvoik"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5urgl"]
+radius = 130.0
+height = 344.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_38u8m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8154j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6x00d"]
+size = Vector2(108, 108)
+
+[node name="bus" type="CharacterBody2D"]
+script = ExtResource("1_stnsb")
+
+[node name="pickupDetection" type="Area2D" parent="."]
+rotation = 1.5707964
+
+[node name="pickupDetectionRadius" type="CollisionShape2D" parent="pickupDetection"]
+shape = SubResource("CapsuleShape2D_5urgl")
+
+[node name="busSprite" type="AnimatedSprite2D" parent="."]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_38u8m")
+
+[node name="busHitbox" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_6x00d")
+
+[node name="camera" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("3_er63n")
+
+[node name="gui" type="CanvasLayer" parent="camera"]
+
+[node name="speedometer" type="RichTextLabel" parent="camera/gui"]
+offset_left = 432.0
+offset_top = 475.0
+offset_right = 1148.0
+offset_bottom = 640.0
+theme_override_font_sizes/normal_font_size = 80
+text = "a"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 2
+vertical_alignment = 2
+script = ExtResource("4_xvoik")
