@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cauuub3s13vfw"]
+
+[ext_resource type="Script" uid="uid://cjosawtt123ju" path="res://scenes/player/bus/bus.gd" id="1_stnsb"]
+[ext_resource type="Texture2D" uid="uid://bgierejs0bjsa" path="res://assets/images/icon.svg" id="2_8154j"]
+[ext_resource type="PackedScene" uid="uid://drdr2dcer5qtc" path="res://scenes/player/camera/camera.tscn" id="3_er63n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_38u8m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8154j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5urgl"]
+radius = 75.0
+height = 340.0
+
+[node name="bus" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_stnsb")
+
+[node name="busSprite" type="AnimatedSprite2D" parent="."]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_38u8m")
+
+[node name="busHitbox" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_5urgl")
+
+[node name="camera" parent="." instance=ExtResource("3_er63n")]

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://cauuub3s13vfw"]
+
+[ext_resource type="Script" uid="uid://cjosawtt123ju" path="res://scenes/player/bus.gd" id="1_stnsb"]
+[ext_resource type="Texture2D" uid="uid://bgierejs0bjsa" path="res://assets/images/icon.svg" id="2_8154j"]
+[ext_resource type="Script" uid="uid://c081tvfvvy0qv" path="res://scenes/player/camera.gd" id="3_er63n"]
+[ext_resource type="Script" uid="uid://cultkxp04g4yb" path="res://scenes/player/label.gd" id="4_xvoik"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_38u8m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8154j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5urgl"]
+radius = 75.0
+height = 340.0
+
+[node name="bus" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 11
+script = ExtResource("1_stnsb")
+
+[node name="busSprite" type="AnimatedSprite2D" parent="."]
+rotation = 1.5707964
+sprite_frames = SubResource("SpriteFrames_38u8m")
+
+[node name="busHitbox" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_5urgl")
+
+[node name="camera" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("3_er63n")
+
+[node name="Label" type="Label" parent="camera"]
+offset_left = -1112.0
+offset_top = -611.0
+offset_right = -1072.0
+offset_bottom = -436.0
+theme_override_font_sizes/font_size = 128
+script = ExtResource("4_xvoik")

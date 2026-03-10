@@ -17,7 +17,7 @@ config/icon="res://assets/images/icon.svg"
 
 [autoload]
 
-player="*res://scenes/player/bus.gd"
+player="*res://scenes/player/bus/bus.gd"
 
 [editor_plugins]
 
