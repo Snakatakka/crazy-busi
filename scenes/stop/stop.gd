@@ -1,5 +1,9 @@
 extends Area2D
 
+@export var currentStop = 0
+@onready var stopTimer: Timer = $stopTimer
+var playerInStopRadius = false
+
 var stops = {
 	'1' = {
 		"stopNames" = [],
@@ -13,11 +17,6 @@ var stops = {
 	},
 }
 
-@export var currentStop = 0
-@onready var stopTimer: Timer = $stopTimer
-var playerInStopRadius = false
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -25,7 +24,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if playerInStopRadius:
-		# print(stopTimer.time_left)
 		if stopTimer.is_stopped():
 			stopTimer.start()
 
@@ -41,3 +39,6 @@ func onStopTimerTimeout() -> void:
 	currentStop += 1
 	if currentStop < (len(stops['1']['stopPositions'])):
 		position = stops['1']['stopPositions'][currentStop]
+		position = stops['1']['stopRotations'][currentStop]
+	else:
+		get_tree().change_scene_to_file("res://scenes/menus/finalScore.tscn")
