@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://blklh6brqe8u"]
+
+[ext_resource type="Script" uid="uid://dxhghgaan2u8u" path="res://scenes/menus/levelButton.gd" id="1_5stof"]
+
+[node name="levelButton" type="Button"]
+theme_override_font_sizes/font_size = 128
+text = "Level [X]"
+script = ExtResource("1_5stof")
+
+[connection signal="pressed" from="." to="." method="onPressed"]

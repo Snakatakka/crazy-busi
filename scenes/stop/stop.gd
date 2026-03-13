@@ -2,7 +2,9 @@ extends Area2D
 
 @export var currentStop = 0
 @onready var stopTimer: Timer = $stopTimer
+
 var playerInStopRadius = false
+var currentLevel = 0
 
 var stops = {
 	'1' = {
@@ -37,8 +39,8 @@ func onBodyExited(body: Node2D) -> void:
 
 func onStopTimerTimeout() -> void:
 	currentStop += 1
-	if currentStop < (len(stops['1']['stopPositions'])):
-		position = stops['1']['stopPositions'][currentStop]
-		position = stops['1']['stopRotations'][currentStop]
+	if currentStop < (len(stops[str(currentLevel)]['stopPositions'])):
+		position = stops[str(currentLevel)]['stopPositions'][currentStop]
+		rotation = stops[str(currentLevel)]['stopRotations'][currentStop]
 	else:
 		get_tree().change_scene_to_file("res://scenes/menus/finalScore.tscn")

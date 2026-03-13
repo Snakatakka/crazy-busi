@@ -1,16 +1,16 @@
 extends CharacterBody2D
 
-@export var speed = 0
-@export var maxSpeed = 1600
-@export var minSpeed = -1600
+@export var speed = 0.0
+@export var maxSpeed = 1600.0
+@export var minSpeed = -1600.0
 
 var rotationSpeed = 0
+var rotationDirection = 0
 
-var rotation_direction = 0
 
 func get_input():
 	if speed != 0:
-		rotation_direction = Input.get_axis("left", "right")
+		rotationDirection = Input.get_axis("left", "right")
 	
 	if Input.is_action_pressed("up"):
 		if speed < maxSpeed:
@@ -32,5 +32,5 @@ func _physics_process(delta):
 		rotationSpeed = 3
 	
 	get_input()
-	rotation += rotation_direction * (rotationSpeed) * delta
+	rotation += rotationDirection * (rotationSpeed) * delta
 	move_and_slide()

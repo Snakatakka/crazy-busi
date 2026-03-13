@@ -18,6 +18,12 @@ config/icon="res://assets/images/icon.svg"
 [autoload]
 
 player="*res://scenes/player/bus/bus.gd"
+stop="*res://scenes/stop/stop.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [editor_plugins]
 

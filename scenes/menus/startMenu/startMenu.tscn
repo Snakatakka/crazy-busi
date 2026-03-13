@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqqfhrkwhg7bh"]
+
+[ext_resource type="Script" uid="uid://c5gahjh5qck85" path="res://scenes/menus/camera.gd" id="1_2ctpa"]
+[ext_resource type="Script" uid="uid://btdcnb3ou0iyp" path="res://scenes/menus/startMenu/startButton.gd" id="2_jmgyj"]
+[ext_resource type="Texture2D" uid="uid://bgierejs0bjsa" path="res://assets/images/icon.svg" id="3_yggv0"]
+
+[node name="StartMenu" type="Node2D"]
+
+[node name="camera" type="Camera2D" parent="."]
+script = ExtResource("1_2ctpa")
+
+[node name="gameStart" type="Node2D" parent="."]
+position = Vector2(-240, 128)
+
+[node name="startButton" type="Button" parent="gameStart"]
+offset_top = 112.0
+offset_right = 468.0
+offset_bottom = 208.0
+pivot_offset = Vector2(240, 48)
+theme_override_font_sizes/font_size = 64
+text = "PLAY DA GAME"
+icon_alignment = 1
+script = ExtResource("2_jmgyj")
+
+[node name="logo" type="Sprite2D" parent="gameStart"]
+position = Vector2(240, -208)
+scale = Vector2(4, 4)
+texture = ExtResource("3_yggv0")
+
+[node name="levelSelect" type="Node2D" parent="."]
+position = Vector2(0, 1080)
+
+[node name="returnArrow" type="Sprite2D" parent="levelSelect"]
+position = Vector2(-864, -440)
+texture = ExtResource("3_yggv0")
+
+[node name="returnButton" type="Button" parent="levelSelect/returnArrow"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(128, 128)
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="busRouteMap" type="Node2D" parent="levelSelect"]
+position = Vector2(512, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="levelSelect/busRouteMap"]
+scale = Vector2(6, 6)
+texture = ExtResource("3_yggv0")
+
+[node name="levelSelectButtons" type="Node2D" parent="levelSelect"]
+
+[node name="container" type="VBoxContainer" parent="levelSelect/levelSelectButtons"]
+offset_left = -800.0
+offset_top = -216.0
+offset_right = -182.0
+offset_bottom = -33.0
+
+[node name="DELETEME" type="Camera2D" parent="."]
+position = Vector2(0, 1080)
+script = ExtResource("1_2ctpa")
+
+[connection signal="pressed" from="gameStart/startButton" to="camera" method="onStartButtonPressed"]
+[connection signal="pressed" from="levelSelect/returnArrow/returnButton" to="camera" method="onReturnButtonPressed"]

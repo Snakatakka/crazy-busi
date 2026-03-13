@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bvln0qjqjg8be"]
+
+[node name="finalScore" type="Node2D"]
+
+[node name="camera" type="Camera2D" parent="."]
+position = Vector2(0, 4)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -432.0
+offset_top = -80.0
+offset_right = 391.0
+offset_bottom = 95.0
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "[shake] YOU WIN!!!!! [/shake]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
