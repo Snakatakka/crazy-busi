@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 var rotationSpeed = 0
 var rotationDirection = 0
+var levelEntered
 
 
 func get_input():

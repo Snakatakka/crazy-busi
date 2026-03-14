@@ -1,3 +1,31 @@
-[gd_scene format=3 uid="uid://c2hu3qydunxo3"]
+[gd_scene load_steps=7 format=3 uid="uid://c2hu3qydunxo3"]
+
+[ext_resource type="PackedScene" uid="uid://cauuub3s13vfw" path="res://scenes/player/bus/bus.tscn" id="1_x3ltn"]
+[ext_resource type="PackedScene" uid="uid://4uygp5rnyhy2" path="res://scenes/stop/stop.tscn" id="2_f00r8"]
+[ext_resource type="PackedScene" uid="uid://drdr2dcer5qtc" path="res://scenes/player/camera/camera.tscn" id="3_0absb"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4o7q8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kpjit"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijh0y"]
+size = Vector2(778, 517)
 
 [node name="1" type="Node2D"]
+
+[node name="bus" parent="." instance=ExtResource("1_x3ltn")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+material = SubResource("CanvasItemMaterial_4o7q8")
+physics_material_override = SubResource("PhysicsMaterial_kpjit")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(681, -408)
+shape = SubResource("RectangleShape2D_ijh0y")
+
+[node name="stop" parent="." instance=ExtResource("2_f00r8")]
+position = Vector2(-833, 451)
+
+[node name="camera" parent="." instance=ExtResource("3_0absb")]
+limit_enabled = false

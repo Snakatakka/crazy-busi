@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="bus game"
-run/main_scene="uid://bqqfhrkwhg7bh"
+run/main_scene="uid://dcbyiyxi2t1dp"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://assets/images/icon.svg"
 
@@ -19,11 +19,6 @@ config/icon="res://assets/images/icon.svg"
 
 player="*res://scenes/player/bus/bus.gd"
 stop="*res://scenes/stop/stop.gd"
-
-[display]
-
-window/size/viewport_width=1920
-window/size/viewport_height=1080
 
 [editor_plugins]
 

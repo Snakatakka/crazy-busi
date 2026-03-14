@@ -4,19 +4,24 @@ extends Area2D
 @onready var stopTimer: Timer = $stopTimer
 
 var playerInStopRadius = false
-var currentLevel = 0
+var currentLevel = str(player.levelEntered)
 
 var stops = {
 	'1' = {
 		"stopNames" = [],
 		"stopPositions" = [Vector2(0, 0), Vector2(0, 0)],
-		"stopRotations" = [180, 180],
+		"stopRotations" = [180, 0],
 	},
 	'2' = {
 		"stopNames" = [],
 		"stopPositions" = [Vector2(0, 0), Vector2(0, 0)],
-		"stopRotations" = [180, 180],
+		"stopRotations" = [180, 0],
 	},
+	'3' = {
+		"stopNames" = [],
+		"stopPositions" = [],
+		"stopRotations" =  []
+	}
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -39,8 +44,13 @@ func onBodyExited(body: Node2D) -> void:
 
 func onStopTimerTimeout() -> void:
 	currentStop += 1
-	if currentStop < (len(stops[str(currentLevel)]['stopPositions'])):
+	print(currentStop)
+	print((len(stops[str(currentLevel)]['stopPositions'])))
+	
+	# for some reason it only works if i have the greater than be the if
+	# no idea why but it works so ¯\_(ツ)_/¯
+	if currentStop >= (len(stops[str(currentLevel)]['stopPositions'])):
+		get_tree().change_scene_to_file('res://scenes/menus/startMenu/finalScore.tscn')
+	else:
 		position = stops[str(currentLevel)]['stopPositions'][currentStop]
 		rotation = stops[str(currentLevel)]['stopRotations'][currentStop]
-	else:
-		get_tree().change_scene_to_file("res://scenes/menus/finalScore.tscn")

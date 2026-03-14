@@ -1,10 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://blklh6brqe8u"]
+[gd_scene load_steps=9 format=3 uid="uid://blklh6brqe8u"]
 
-[ext_resource type="Script" uid="uid://dxhghgaan2u8u" path="res://scenes/menus/levelButton.gd" id="1_5stof"]
+[ext_resource type="Script" uid="uid://bkjblg1wlgvfa" path="res://scenes/menus/buttons/levelButton.gd" id="1_5stof"]
+[ext_resource type="FontFile" uid="uid://cr8vtu43n5sfm" path="res://assets/fonts/Helvetica.ttf" id="1_7tovv"]
+[ext_resource type="Texture2D" uid="uid://bgierejs0bjsa" path="res://assets/images/icon.svg" id="2_l8iua"]
+[ext_resource type="Script" uid="uid://dxhghgaan2u8u" path="res://scenes/menus/buttons/button.gd" id="3_jhctv"]
 
-[node name="levelButton" type="Button"]
-theme_override_font_sizes/font_size = 128
-text = "Level [X]"
+[sub_resource type="Theme" id="Theme_7tovv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tovv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhctv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xjkv3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="levelButton" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 script = ExtResource("1_5stof")
 
-[connection signal="pressed" from="." to="." method="onPressed"]
+[node name="button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -256.0
+offset_top = -96.0
+offset_right = 270.0
+offset_bottom = 87.0
+pivot_offset = Vector2(256, 96)
+theme = SubResource("Theme_7tovv")
+theme_override_fonts/font = ExtResource("1_7tovv")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxFlat_7tovv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jhctv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xjkv3")
+text = "Route [X]"
+script = ExtResource("3_jhctv")
+levelToTransition = "C:/Users/user/OneDrive/Documents/bus-game/scenes/levels/1.tscn"
+numLevel = 1
+
+[node name="levelLogo" type="Sprite2D" parent="."]
+position = Vector2(-352, -16)
+texture = ExtResource("2_l8iua")
+
+[connection signal="mouse_entered" from="button" to="." method="onHover"]
+[connection signal="mouse_exited" from="button" to="." method="onNotHover"]
+[connection signal="pressed" from="button" to="button" method="onPressed"]

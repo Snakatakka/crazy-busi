@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqqfhrkwhg7bh"]
+[gd_scene load_steps=5 format=3 uid="uid://bqqfhrkwhg7bh"]
 
-[ext_resource type="Script" uid="uid://c5gahjh5qck85" path="res://scenes/menus/camera.gd" id="1_2ctpa"]
+[ext_resource type="Script" uid="uid://c5gahjh5qck85" path="res://scenes/menus/menuCamera.gd" id="1_2ctpa"]
 [ext_resource type="Script" uid="uid://btdcnb3ou0iyp" path="res://scenes/menus/startMenu/startButton.gd" id="2_jmgyj"]
 [ext_resource type="Texture2D" uid="uid://bgierejs0bjsa" path="res://assets/images/icon.svg" id="3_yggv0"]
+[ext_resource type="PackedScene" uid="uid://blklh6brqe8u" path="res://scenes/menus/buttons/levelButton.tscn" id="4_jmgyj"]
 
 [node name="StartMenu" type="Node2D"]
 
@@ -52,10 +53,29 @@ texture = ExtResource("3_yggv0")
 [node name="levelSelectButtons" type="Node2D" parent="levelSelect"]
 
 [node name="container" type="VBoxContainer" parent="levelSelect/levelSelectButtons"]
-offset_left = -800.0
-offset_top = -216.0
-offset_right = -182.0
-offset_bottom = -33.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -407.0
+offset_top = -196.0
+offset_right = -407.0
+offset_bottom = 316.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-3, 224)
+theme_override_constants/separation = 192
+
+[node name="levelButton" parent="levelSelect/levelSelectButtons/container" instance=ExtResource("4_jmgyj")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="levelButton2" parent="levelSelect/levelSelectButtons/container" instance=ExtResource("4_jmgyj")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="levelButton3" parent="levelSelect/levelSelectButtons/container" instance=ExtResource("4_jmgyj")]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="DELETEME" type="Camera2D" parent="."]
 position = Vector2(0, 1080)
