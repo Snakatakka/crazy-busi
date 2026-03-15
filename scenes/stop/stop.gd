@@ -50,7 +50,7 @@ func onStopTimerTimeout() -> void:
 	# for some reason it only works if i have the greater than be the if
 	# no idea why but it works so ¯\_(ツ)_/¯
 	if currentStop >= (len(stops[str(currentLevel)]['stopPositions'])):
-		get_tree().change_scene_to_file('res://scenes/menus/startMenu/finalScore.tscn')
+		get_tree().change_scene_to_file('res://scenes/menus/finalScore/finalScore.tscn')
 	else:
 		position = stops[str(currentLevel)]['stopPositions'][currentStop]
 		rotation = stops[str(currentLevel)]['stopRotations'][currentStop]

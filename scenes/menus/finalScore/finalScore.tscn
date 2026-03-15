@@ -1,0 +1,94 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvln0qjqjg8be"]
+
+[ext_resource type="FontFile" uid="uid://cr8vtu43n5sfm" path="res://assets/fonts/Helvetica.ttf" id="1_asa74"]
+
+[sub_resource type="Theme" id="Theme_nlqo0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2wykt"]
+
+[sub_resource type="GDScript" id="GDScript_nlqo0"]
+resource_name = "returnToStartButton"
+script/source = "extends Button
+
+var tween
+@onready var transitionScreen: ColorRect = $\"../../transitionScreen\"
+
+func onButtonPressed() -> void:
+	if tween:
+		tween.kill()
+	
+	tween = create_tween()
+	tween.tween_property(transitionScreen, \"modulate:a\", 0, 1).set_ease(Tween.EASE_OUT)
+	finished()
+
+func finished() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/menus/startMenu/startMenu.tscn\")
+"
+
+[node name="finalScore" type="Node2D"]
+
+[node name="camera" type="Camera2D" parent="."]
+position = Vector2(0, 4)
+
+[node name="winText" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -386.99997
+offset_bottom = -386.99997
+scale = Vector2(2.25, 2.25)
+pivot_offset = Vector2(0, 87.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="winText"]
+layout_mode = 0
+offset_left = -405.0
+offset_right = 418.0
+offset_bottom = 175.0
+pivot_offset = Vector2(405, 87.5)
+theme_override_fonts/normal_font = ExtResource("1_asa74")
+theme_override_font_sizes/normal_font_size = 128
+bbcode_enabled = true
+text = "[shake] YOU WIN!!!!! [/shake]"
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="returnToStart" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="returnToStartButton" type="Button" parent="returnToStart"]
+layout_mode = 1
+offset_left = -597.5
+offset_top = 300.0
+offset_right = 597.5
+offset_bottom = 429.0
+theme = SubResource("Theme_nlqo0")
+theme_override_fonts/font = ExtResource("1_asa74")
+theme_override_font_sizes/font_size = 128
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2wykt")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2wykt")
+text = "Return to Main Menu"
+script = SubResource("GDScript_nlqo0")
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="returnToStart/returnToStartButton" to="returnToStart/returnToStartButton" method="onButtonPressed"]
