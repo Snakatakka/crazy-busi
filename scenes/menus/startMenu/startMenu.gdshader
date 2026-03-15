@@ -5,8 +5,6 @@ void vertex() {
 }
 
 void fragment() {
-	UV.y = TIME * 0.25;
-	UV.x = TIME * 0.25;
 }
 
 //void light() {

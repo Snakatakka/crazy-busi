@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://clica6ny531gc" path="res://assets/images/mainMenuBG.png" id="4_6cv7y"]
 [ext_resource type="PackedScene" uid="uid://blklh6brqe8u" path="res://scenes/menus/buttons/levelButton.tscn" id="4_jmgyj"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rva6p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yggv0"]
 shader = ExtResource("3_2vj7f")
 
 [node name="StartMenu" type="Node2D"]
@@ -75,35 +75,44 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="backgroundColor" type="ColorRect" parent="."]
-z_index = -4096
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -960.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = 1620.0
-grow_horizontal = 2
-mouse_filter = 2
-color = Color(0.249, 0.62665004, 0.83, 1)
+[node name="background" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="backgroundPattern" type="TextureRect" parent="."]
+[node name="backgroundPattern" type="TextureRect" parent="background"]
 modulate = Color(1, 1, 1, 0.44705883)
-z_index = -4096
+clip_children = 2
+z_index = -4095
 texture_repeat = 2
-material = SubResource("ShaderMaterial_rva6p")
+material = SubResource("ShaderMaterial_yggv0")
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -960.0
+offset_left = -980.0
 offset_top = -540.0
-offset_right = 960.0
+offset_right = 940.0
 offset_bottom = 1620.0
 grow_horizontal = 2
 mouse_filter = 2
 texture = ExtResource("4_6cv7y")
 stretch_mode = 1
+
+[node name="backgroundColor" type="ColorRect" parent="background"]
+z_index = -4096
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -980.0
+offset_top = -540.0
+offset_right = 940.0
+offset_bottom = 1620.0
+grow_horizontal = 2
+mouse_filter = 2
+color = Color(0.249, 0.62665004, 0.83, 1)
 
 [node name="camera" type="Camera2D" parent="."]
 script = ExtResource("1_2ctpa")
